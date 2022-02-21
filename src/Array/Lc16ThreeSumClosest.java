@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @Date 2/18/22 10:17 am
  * @Version 1.0
  */
-public class Lc163SumClosest {
+public class Lc16ThreeSumClosest {
     int ret1(){
         return 1;
     }

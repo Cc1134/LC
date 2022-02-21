@@ -11,11 +11,11 @@ import java.util.List;
  * @Date 2/18/22 10:13 am
  * @Version 1.0
  */
-public class Lc153Sum {
+public class Lc15tThreeSum {
 
     public List<List<Integer>> threeSum(int[] nums) {
-        if(len?){ // 当输入的数字少于3个时
-            return ?;//肯定不构成有效的“三数之和”
+        if(nums.length < 3){ // 当输入的数字少于3个时
+            return new ArrayList<>();//肯定不构成有效的“三数之和”
         }
         // 保持数组有序(时间复杂度nlogn < n*n)
         // - a<=b<=c, 三个元素有序排列，去重心智负担低
@@ -23,9 +23,11 @@ public class Lc153Sum {
         Arrays.sort(nums);
         List<List<Integer>> ans = new ArrayList<>();
 
-        for(i in index of nums){
+        for(int i : nums){
             int a = nums[i];
             //先检查当前的a是否重复于上一个数字
+            //对于，不能取重复的值，例a = -1，b = -1，c = 2
+            //在a = -1的情况下，b已经取过-1，a再取第二个-1就会造成重复
             if(i > 0 && nums[i-1]==nums[i]){
                 continue;
             }
@@ -38,17 +40,18 @@ public class Lc153Sum {
             while(L < R){
                 int b = nums[L];
                 int c = nums[R];
-                if(less){
-                    ?; // 指针移动
+                if(a+b+c < 0){
+                    L++; // 指针移动
                     continue;
                 }
-                if(greater){
-                    ?; // 指针移动
+                if(a+b+c > 0){
+                    R--; // 指针移动
                     continue;
                 }
-                List<Integer> list = new ArrayList<>(3){
-                    a,b,c
-                };
+                List<Integer> list = new ArrayList<>(3){};
+                list.add(a);
+                list.add(b);
+                list.add(c);
                 ans.add(list);
                 //当L指针指向了重复于此次成功了的b取值时
                 //L指针步进

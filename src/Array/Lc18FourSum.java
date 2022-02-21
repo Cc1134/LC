@@ -11,7 +11,7 @@ import java.util.List;
  * @Date 2/18/22 10:19 am
  * @Version 1.0
  */
-public class Lc184Sum {
+public class Lc18FourSum {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         Arrays.sort(nums);
         List<List<Integer>> ans = new ArrayList<>();
