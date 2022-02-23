@@ -11,7 +11,7 @@ import java.util.List;
  * @Date 2/18/22 10:13 am
  * @Version 1.0
  */
-public class Lc15tThreeSum {
+public class Lc15ThreeSum {
 
     public List<List<Integer>> threeSum(int[] nums) {
         if(nums.length < 3){ // 当输入的数字少于3个时
