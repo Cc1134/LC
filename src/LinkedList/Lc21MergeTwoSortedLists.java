@@ -32,6 +32,22 @@ public class Lc21MergeTwoSortedLists {
     ListNode list1;
     ListNode list2;
 
+    /*
+    为什么不能写一个roll(ListNode node)的函数?
+    如果把list1和list2当参数传进去，拿到node之后，list1和list2是没有被滚动的
+    ListNode node1 = roll(list1); 滚动链表1的链表头
+        ListNode tempParamValue = list1;
+        ListNode returnValue;
+            {
+                ListNode node = tempParamValue;
+                ListNode origin = node;
+                if(node != null){
+                    node = node.next;
+                }
+                returnValue = origin; // return origin
+            }
+            ListNode node1 = returnValue;
+    */
     ListNode roll1(){
         ListNode origin = list1;
         if(list1 != null){
