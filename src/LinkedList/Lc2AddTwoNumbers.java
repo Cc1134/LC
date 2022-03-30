@@ -66,7 +66,7 @@ public class Lc2AddTwoNumbers {
         boolean carryDigit = false;
         while(l1 != null || l2 != null){
             ans = ((l1 == null)?0: l1.val) + ((l2 == null)?0: l2.val) + ((carryDigit)?1:0);
-            if(ans > 10){
+            if(ans >= 10){
                 ans = ans % 10;
                 carryDigit = true;
             }else{
