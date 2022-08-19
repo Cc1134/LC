@@ -12,32 +12,35 @@ import java.util.LinkedList;
  */
 public class Lc71SimplifyPath {
     public String simplifyPath(String path) {
-        String[] names = path.split(?);
+        String[] names = path.split("/");
         Deque<String> stack = new LinkedList<>();
         for(String name: names){
-            if(?){ // 连续两个斜杠？
+            if(name.equals("/")){ // 连续两个斜杠？
                 continue;
             }
-            if(?){ // current "."
+            if(name.equals(".")){ // current "."
                 continue;
             }
-            if(?){ // parent ".."
-                if(?){
+            if(name.equals("..")){ // parent ".."
+                if(!stack.isEmpty()){
                     stack.removeLast(); // pop
                 }
                 continue;
             }
-            stack.addLast(?);
+            if(name.equals("")){
+                continue;
+            }
+            stack.addLast(name);
         }
         if(stack.isEmpty()){
-            return ?;
+            return "/";
         }
-        StringBuilder builder = ?;
+        StringBuilder builder = new StringBuilder();
         for(String name: stack){
-            builder.append('?splitter');
-            builder.append(?);
+            builder.append('/');
+            builder.append(name);
         }
-        return ?;
+        return builder.toString();
     }
 
 }

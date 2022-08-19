@@ -52,6 +52,34 @@ public class Lc3LongestSubstringWithoutRepeatingCharacters {
         }
         return maxlen;
     }
+
+    public int length(String s){
+        int start = 0;
+        int end = 1;
+        int maxlen = 1;
+        char[] chars = s.toCharArray();
+        HashSet<Character> set = new HashSet<>();
+        set.add(chars[start]);
+        while(true) {
+            while (end < chars.length && !(set.contains(chars[end]))) {
+                set.add(chars[end]);
+                end++;
+            }
+            //end=1的时候说明 1不符合，所以跳出循环，否则end会等于2，2-0就是2个长度了
+            if (maxlen < (end - start)) {
+                maxlen = end - start;
+            }
+            if (end >= chars.length) {
+                return maxlen;
+            }
+            while (set.contains(chars[end])) {
+                set.remove(chars[start]);
+                start++;
+            }
+        }
+
+    }
+
 }
 
 //class Solution {
@@ -106,7 +134,7 @@ class Solution {
                 set.add(s.charAt(end));
                 end++;
             }
-            if(maxlen < end){
+            if(maxlen < (end - start)){
                 maxlen = end - start;
             }
             //end达到最大

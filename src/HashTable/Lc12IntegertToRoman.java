@@ -1,6 +1,7 @@
 package HashTable;
 
 import java.util.HashMap;
+import java.util.Locale;
 
 /**
  * @ClassName: Lc12IntegertToRoman
@@ -40,7 +41,7 @@ ans += "L"
 余数 == 0
 */
 
-    public String intToRoman(int num) {
+    public static String intToRoman(int num) {
         //建立hash<key-value>
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         map.put("I", 1);
@@ -71,8 +72,11 @@ ans += "L"
             ans += mykey;
             num -= myvalue;
         }
+
         return ans;
     }
+
+
 }
 
 

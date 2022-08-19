@@ -63,5 +63,40 @@ public class Lc5LongestPalindromicSubstring {
         }
         return s.substring(begin, end+1);
     }
+
+    public String longestPalindromeP(String s) {
+        int start = 0;
+        int end = 1;
+        int maxlen = 1;
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            int L = i;
+            int R = i+1;
+            while(0 <= L && R <= chars.length && chars[L] == chars[R-1]){
+                if(maxlen < (R-L)){
+                    maxlen = R - L;
+                    start = L;
+                    end = R;
+                }
+                L--;
+                R++;
+            }
+
+            if(i < chars.length-1 && chars[i] == chars[i+1]){
+                L = i;
+                R = i+2;
+                while(0 <= L && R <= chars.length && chars[L] == chars[R-1]){
+                    if (maxlen < (R - L)){
+                        maxlen = R - L;
+                        start = L;
+                        end = R;
+                    }
+                    L--;
+                    R++;
+                }
+            }
+        }
+        return s.substring(start,end);
+    }
 }
 
